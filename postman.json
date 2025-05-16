@@ -1,0 +1,65 @@
+{
+  "info": {
+    "name": "Live Poll API",
+    "_postman_id": "12345678-aaaa-bbbb-cccc-1234567890ab",
+    "description": "Postman collection for the Poll App backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Anonymous Token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9898/api/auth/anon",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9898",
+          "path": ["api", "auth", "anon"]
+        }
+      }
+    },
+    {
+      "name": "Get All Polls",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9898/api/poll",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9898",
+          "path": ["api", "poll"]
+        }
+      }
+    },
+    {
+      "name": "Vote on a Poll",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"optionId\": \"<OPTION_ID>\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:9898/api/poll/<POLL_ID>/vote",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9898",
+          "path": ["api", "poll", "<POLL_ID>", "vote"]
+        }
+      }
+    }
+  ]
+}
